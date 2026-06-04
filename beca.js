@@ -1,23 +1,33 @@
 const form = document.getElementById("becaForm");
 
-form.addEventListener("submit", function(e){
+form.addEventListener("submit", async (e) => {
 
     e.preventDefault();
 
-    const button = document.querySelector(".btn-submit");
+    const data = {
+        nombre: form.nombre.value,
+        celular: form.celular.value,
+        carta: form.carta.value
+    };
 
-    button.innerHTML = "Enviando...";
-    button.style.opacity = ".8";
+    try{
 
-    setTimeout(()=>{
+        await fetch(
+            "https://script.google.com/macros/s/AKfycbxrHHcDZR67nDkocHkss4mSI2zUsk54Xwz6fZGl5ES2rfBCx1YFyzJbuM7Fv9EuBHln/exec",
+            {
+                method: "POST",
+                body: JSON.stringify(data)
+            }
+        );
 
-        button.innerHTML = "✓ Solicitud Enviada";
-        button.style.background = "linear-gradient(45deg,#00b09b,#96c93d)";
-
-        alert("Tu solicitud fue enviada correctamente. Pronto nos comunicaremos contigo.");
+        alert("Solicitud enviada correctamente");
 
         form.reset();
 
-    },2000);
+    }catch(error){
+
+        alert("Error al enviar");
+
+    }
 
 });
