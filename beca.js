@@ -12,13 +12,14 @@ form.addEventListener("submit", async (e) => {
 
     try{
 
-        await fetch(
-            "https://script.google.com/macros/s/AKfycbxrHHcDZR67nDkocHkss4mSI2zUsk54Xwz6fZGl5ES2rfBCx1YFyzJbuM7Fv9EuBHln/exec",
-            {
-                method: "POST",
-                body: JSON.stringify(data)
-            }
-        );
+      await fetch(
+    "https://script.google.com/macros/s/AKfycbxrHHcDZR67nDkocHkss4mSI2zUsk54Xwz6fZGl5ES2rfBCx1YFyzJbuM7Fv9EuBHln/exec",
+    {
+        method: "POST",
+        mode: "no-cors",
+        body: JSON.stringify(data)
+    }
+);
 
         alert("Solicitud enviada correctamente");
 
