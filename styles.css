@@ -308,6 +308,7 @@ nav a:hover{
 /* OVERLAY */
 
 .card-overlay{
+    pointer-events: none;
     position:absolute;
     inset:0;
 
